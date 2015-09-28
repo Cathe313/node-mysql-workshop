@@ -24,16 +24,27 @@ connection.queryAsync("SHOW DATABASES;").then(
     }
 ).map(
     function(mappedArray) {
-        connection.queryAsync("SHOW TABLES IN " + mappedArray + ";").then(
-            function(results) {
-                var tables = results[0];
-                for (var i = 0; i < tables.length; i++) {
-                    for (var j in tables[i]) {
-                    console.log((mappedArray).bold.cyan, (tables[i][j]).rainbow);
-                    }
-                }
+        return connection.queryAsync("SHOW TABLES IN " + mappedArray + ";")
+        .spread(
+            function(results, otherStuff) {
+                var tableNames = results.map(function(mappedResults) {
+                    return mappedResults['Tables_in_' + mappedArray];
+                });
+                return {
+                    databaseName: mappedArray,
+                    tableNames: tableNames
+                };
             }    
         );    
+    }
+).then(
+    function(databases) {
+        databases.forEach(function(dbAndTables){
+            console.log(dbAndTables.databaseName.bold.cyan);
+            dbAndTables.tableNames.forEach(function(tableName){
+                console.log("\t" + tableName.rainbow);
+            });
+        });
     }
 ).finally(
     function() {
@@ -41,5 +52,15 @@ connection.queryAsync("SHOW DATABASES;").then(
     }
 );
 
+/*var tables = results[0];
+                for (var i = 0; i < tables.length; i++) {
+                    for (var j in tables[i]) {
+                    console.log((mappedArray).bold.cyan, (tables[i][j]).rainbow);
+                    }
+                }*/
 
+[1,2,3].map(function(element) {
+    return element + 1;
+});
 
+[2,3,4];
