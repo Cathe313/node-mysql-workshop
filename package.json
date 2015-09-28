@@ -12,10 +12,19 @@
     "workshop",
     "promises"
   ],
-  "author": "",
+  "author": "Catherine",
   "license": "ISC",
   "dependencies": {
     "bluebird": "^2.10.1",
     "mysql": "^2.9.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Cathe313/node-mysql-workshop.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Cathe313/node-mysql-workshop/issues"
+  },
+  "homepage": "https://github.com/Cathe313/node-mysql-workshop"
 }
