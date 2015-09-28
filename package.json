@@ -1,28 +1,29 @@
 {
   "name": "node-mysql-workshop",
-  "version": "0.0.1",
-  "description": "Workshop on NodeJS + MySQL + Promise",
+  "version": "1.0.0",
+  "description": "Exercises on linking nodeJS programs to mySQL databases",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "mysql",
-    "nodejs",
-    "workshop",
-    "promises"
-  ],
-  "author": "Catherine",
-  "license": "ISC",
   "dependencies": {
     "bluebird": "^2.10.1",
+    "cli-table": "^0.3.1",
+    "colors": "^1.1.2",
     "mysql": "^2.9.0"
   },
   "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Cathe313/node-mysql-workshop.git"
+    "url": "https://github.com/Cathe313/node-mysql-workshop"
   },
+  "keywords": [
+    "addressbook",
+    "mysql",
+    "nodejs"
+  ],
+  "author": "Catherine",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/Cathe313/node-mysql-workshop/issues"
   },
