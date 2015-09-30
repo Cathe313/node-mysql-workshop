@@ -21,12 +21,10 @@ connection.queryAsync("SELECT id, (concat('#', id, ':')) AS 'ID', email FROM Acc
         connection.queryAsync("SELECT name AS 'Name' FROM AddressBook WHERE accountId IN (" + accounts["id"] + ");").spread(
         function(results) {
             console.log(accounts['ID'].bold, "\t", accounts["email"].underline);
-            return results;
-        }).map(
-            function(names) {
+            results.map(function(names){
                 console.log ("\t", names["Name"].yellow);
-            }
-        )
+            });
+        });
     }
 ).finally(
     function() {
