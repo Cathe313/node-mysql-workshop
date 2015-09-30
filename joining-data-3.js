@@ -23,12 +23,12 @@ connection.queryAsync("SELECT (concat('#', Account.id, ':')) AS 'ID', Account.em
         for (var i = 0; i < results.length; i++) {
             if (ids.indexOf(results[i]['ID']) === -1) {
                 ids.push(results[i]['ID']);
-                console.log(results[i]['ID'].bold.yellow);
-                console.log("\t" + results[i]['name'].rainbow);
+                console.log("\n" + results[i]['ID'].bold.yellow + "\t" + results[i]['email'].yellow + "\n\tPassword: " + colors.random(results[i]['password']));
+                console.log("\tCreated: " + colors.cyan(results[i]["createdOn"]) + "\n\tModified: " + colors.cyan(results[i]['modifiedOn']));
             }
-            else {
-                console.log("\t" + results[i]['name'].rainbow);
-            }
+            console.log("\tAddress Book #" + colors.yellow(results[i]['AddressBookId']) + ": " + colors.rainbow(results[i]['name']));
+            console.log("\t\tCreated: " + colors.magenta(results[i]['AddressBookCreatedDate']) + "\n\t\tModified: " + colors.magenta(results[i]['AddressBookModifiedDate']));
+            
         }
     }
 ).finally(
