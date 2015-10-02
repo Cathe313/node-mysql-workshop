@@ -14,10 +14,10 @@ var connection = mysql.createConnection({
   database : 'addressbook'
 });
 
-var count = 1;
+var count = 0;
 
 function query (count) {
-    connection.queryAsync("SELECT id, (concat('#', id, ':')) AS 'ID', email FROM Account WHERE id BETWEEN " + count + " AND " + (count + 9) + ";").spread(
+    connection.queryAsync("SELECT id, (concat('#', id, ':')) AS 'ID', email FROM Account LIMIT " + count + "," + (count + 10) + ";").spread(
         function(results) {
             for (var i = 0; i < 10; i++) {
                 console.log(colors.bold(results[i]['ID']), "\t" + results[i]['email']);
@@ -26,7 +26,7 @@ function query (count) {
         }    
     ).then(
         function(){
-            if (count < 900) {
+            if (count < 990) {
                 count += 10;
             }
             else {
@@ -36,7 +36,7 @@ function query (count) {
             console.log('Do you want to continue? Answer yes or no.');
             prompt.start();
             prompt.getAsync(["more"], function(err, response) {
-                if (response.more === "yes") {
+                if (response.more.toLowerCase() === "yes" || response.more.toLowerCase() === "y") {
                     query(count);
                 }
                 else {
