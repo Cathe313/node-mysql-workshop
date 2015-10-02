@@ -16,9 +16,9 @@ connection.queryAsync("SELECT (concat('#', Account.id, ':')) AS 'ID', Account.em
                 Account.createdOn, Account.modifiedOn, AddressBook.id AS AddressBookId, AddressBook.name, \
                 AddressBook.createdOn AS AddressBookCreatedDate, AddressBook.modifiedOn AS AddressBookModifiedDate \
                 FROM Account JOIN AddressBook ON AddressBook.accountId = Account.id \
-                WHERE Account.id BETWEEN 1 AND 10 \
                 GROUP BY Account.id \
-                ORDER BY Account.id;").spread(
+                ORDER BY Account.id \
+                LIMIT 0,10;").spread(
     function(results) {
         return results;
     }    
