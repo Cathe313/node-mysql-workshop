@@ -14,8 +14,6 @@ var connection = mysql.createConnection({
   database : 'addressbook'
 });
 
-var count = 0;
-
 function query (count) {
     connection.queryAsync("SELECT id, (concat('#', id, ':')) AS 'ID', email FROM Account LIMIT " + count + "," + (count + 10) + ";").spread(
         function(results) {
@@ -51,4 +49,4 @@ function query (count) {
     );
 }
 
-query(count);
+query(0);
